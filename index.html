@@ -1,79 +1,92 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SmartCash - Dashboard Financeiro Inteligente</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header class="app-header">
-        <div class="container">
-            <h1>SmartCash</h1>
-            <p>Seu Dashboard Financeiro Inteligente</p>
-        </div>
+      <div class="container">
+        <h1>SmartCash</h1>
+        <p>Seu Dashboard Financeiro Inteligente</p>
+      </div>
     </header>
 
     <main class="container app-main">
-        <!-- Painel de Resumo (Cards) -->
-        <section class="summary-container" aria-label="Resumo Financeiro">
-            <div class="card card-income">
-                <h3>
-                    <span>Entradas</span>
-                    <span class="icon" aria-hidden="true">▲</span>
-                </h3>
-                <p id="income-display">R$ 0,00</p>
+      <!-- Painel de Resumo (Cards) -->
+      <section class="summary-container" aria-label="Resumo Financeiro">
+        <div class="card card-income">
+          <h3>
+            <span>Entradas</span>
+            <span class="icon" aria-hidden="true">▲</span>
+          </h3>
+          <p id="income-display">R$ 0,00</p>
+        </div>
+
+        <div class="card card-expense">
+          <h3>
+            <span>Saídas</span>
+            <span class="icon" aria-hidden="true">▼</span>
+          </h3>
+          <p id="expense-display">R$ 0,00</p>
+        </div>
+
+        <div class="card card-total" id="total-card">
+          <h3>
+            <span>Saldo Total</span>
+            <span class="icon" id="total-icon" aria-hidden="true">💰</span>
+          </h3>
+          <p id="balance-display">R$ 0,00</p>
+        </div>
+      </section>
+
+      <!-- Formulário e Extrato -->
+      <div class="grid-content">
+        <!-- Formulário de Transação -->
+        <section class="form-container">
+          <h2>Nova Transação</h2>
+          <form id="transaction-form">
+            <div class="form-control">
+              <label for="description">Descrição</label>
+              <input
+                type="text"
+                id="description"
+                placeholder="Ex: Salário, Almoço..."
+                autocomplete="off"
+              />
             </div>
-            
-            <div class="card card-expense">
-                <h3>
-                    <span>Saídas</span>
-                    <span class="icon" aria-hidden="true">▼</span>
-                </h3>
-                <p id="expense-display">R$ 0,00</p>
+
+            <div class="form-control">
+              <label for="amount">Valor (use negativo para saídas)</label>
+              <input
+                type="text"
+                id="amount"
+                placeholder="Ex: 1500.00 ou -45.50"
+              />
+              <small>Exemplo: 250 para receita ou -50 para despesa</small>
             </div>
-            
-            <div class="card card-total" id="total-card">
-                <h3>
-                    <span>Saldo Total</span>
-                    <span class="icon" id="total-icon" aria-hidden="true">💰</span>
-                </h3>
-                <p id="balance-display">R$ 0,00</p>
-            </div>
+
+            <button type="submit" class="btn-submit">
+              Adicionar Transação
+            </button>
+          </form>
         </section>
 
-        <!-- Formulário e Extrato -->
-        <div class="grid-content">
-            <!-- Formulário de Transação -->
-            <section class="form-container">
-                <h2>Nova Transação</h2>
-                <form id="transaction-form">
-                    <div class="form-control">
-                        <label for="description">Descrição</label>
-                        <input type="text" id="description" placeholder="Ex: Salário, Almoço..." autocomplete="off">
-                    </div>
-                    
-                    <div class="form-control">
-                        <label for="amount">Valor (use negativo para saídas)</label>
-                        <input type="number" id="amount" step="0.01" placeholder="Ex: 1500.00 ou -45.50">
-                        <small>Exemplo: 250 para receita ou -50 para despesa</small>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Adicionar Transação</button>
-                </form>
-            </section>
-
-            <!-- Lista de Extrato -->
-            <section class="history-container">
-                <h2>Histórico / Extrato</h2>
-                <ul id="transaction-list" class="transaction-list">
-                    <!-- Inserido dinamicamente via JS -->
-                </ul>
-                <p id="empty-state" class="empty-state">Nenhuma transação cadastrada ainda.</p>
-            </section>
-        </div>
+        <!-- Lista de Extrato -->
+        <section class="history-container">
+          <h2>Histórico / Extrato</h2>
+          <ul id="transaction-list" class="transaction-list">
+            <!-- Inserido dinamicamente via JS -->
+          </ul>
+          <p id="empty-state" class="empty-state">
+            Nenhuma transação cadastrada ainda.
+          </p>
+        </section>
+      </div>
     </main>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
